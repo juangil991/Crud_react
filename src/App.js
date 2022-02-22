@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import AddUserForm from "./components/AddUserForm";
 
 function App() {
+
   const usersData = [
     { id: uuidv4(), name: "Tania", username: "floppydiskette" },
     { id: uuidv4(), name: "Craig", username: "siliconeidolon" },
@@ -15,6 +16,10 @@ function App() {
   const addUser = (user) => {
     users.id = uuidv4();
     setUsers([...users, user]);
+  };
+
+  const deleteUser = (id) => {
+    setUsers(users.filter((pedrito) => pedrito.id !== id));
   };
 
   return (
@@ -29,6 +34,7 @@ function App() {
           <h2>View users</h2>
           <UserTable 
             users={users}
+            deleteUser={deleteUser}
           />
         </div>
       </div>
